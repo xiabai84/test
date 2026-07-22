@@ -4,8 +4,7 @@
   The istio-proxy container has pilot-agent, which can query the local Envoy admin — no istioctl required:
 
   # dump Envoy config from the app pod's sidecar
-  oc exec -n bsp-collaboration-etu <app-pod> -c istio-proxy -- \
-    pilot-agent request GET config_dump > cd.json
+  oc exec <app-pod> -c istio-proxy -- pilot-agent request GET config_dump > cd.json
 
   # find the inbound filter chain for :8800 and whether it requires a client cert (= STRICT)
   python3 - <<'PY'
